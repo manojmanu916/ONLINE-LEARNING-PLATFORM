@@ -1,0 +1,72 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+}
+
+.hero-img {
+  width: 100%;
+  max-width: 200px; /* You can adjust this value */
+  height: 100%;
+  border-radius: 10px; /* Optional: rounded corners */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: light shadow */
+}
+
+header, footer {
+  background-color: #0077b6;
+  color: #fff;
+  padding: 1rem 2rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+header h1 {
+  margin: 0;
+  display: inline-block;
+}
+
+nav {
+  float: right;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+}
+
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4rem 2rem;
+  background-color: #ffffff;
+}
+
+.hero-text {
+  max-width: 60%;
+}
+
+.hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero img {
+  max-width: 35%;
+  height: auto;
+}
+
+.why-section {
+  background-color: #f0f0f0;
+  padding: 2rem;
+  text-align: center;
+}
+
+.why-section h3 {
+  font-size: 1.8rem;
+}

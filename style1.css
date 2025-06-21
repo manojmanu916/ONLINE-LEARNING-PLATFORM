@@ -1,0 +1,204 @@
+ body {
+    background-image: url('background1.jpg'); /* Replace with your image path */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center bottom; /* Moves the image down */
+    filter: brightness(80%); /* Dims the image */
+    height: 100vh;
+     margin: 0;
+ }
+
+  /* Smooth transitions for UI elements */
+  .course-card,
+  nav a,
+  #back-to-courses {
+    transition: all 0.3s ease-in-out;
+  }
+
+  /* Course card hover effect */
+  .course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Navigation links */
+  nav a {
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+
+  nav a:hover {
+    transform: translateX(5px);
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #5c6ac4;
+    border-radius: 10px;
+  }
+
+  /* Course video container padding on smaller devices */
+  @media (max-width: 768px) {
+    .aspect-w-16 {
+      padding-top: 56.25%;
+      position: relative;
+    }
+
+    .aspect-w-16 iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  /* Course section header styling */
+  #course-list-section header h1 {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Button hover underline animation */
+  #back-to-courses {
+    position: relative;
+    display: inline-block;
+  }
+
+  #back-to-courses::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background-color: #5c6ac4;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    transform-origin: left;
+  }
+
+  #back-to-courses:hover::after {
+    transform: scaleX(1);
+  }
+
+  /* Welcome section text shadow */
+  #welcome-section h1,
+  #welcome-section p {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  }
+
+/* Smooth transitions for UI elements */
+.course-card,
+nav a,
+#back-to-courses {
+  transition: all 0.3s ease-in-out;
+  
+}
+
+/* Course card hover effect */
+.course-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Navigation links styling */
+nav a {
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  position: relative;
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: #c3bfff;
+  bottom: 0;
+  left: 0;
+  transition: 0.3s;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* Welcome Section Text Effects */
+#welcome-section h1 {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#welcome-section p {
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Back button underline effect */
+#back-to-courses {
+  position: relative;
+  font-weight: 500;
+}
+#back-to-courses::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  left: 0;
+  bottom: -2px;
+  background-color: #5c6ac4;
+  transition: 0.3s ease-in-out;
+}
+#back-to-courses:hover::after {
+  width: 100%;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #5c6ac4;
+  border-radius: 10px;
+}
+
+/* Responsive video container fallback */
+@media (max-width: 768px) {
+  .aspect-w-16 {
+    padding-top: 56.25%;
+    position: relative;
+  }
+
+  .aspect-w-16 iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/* Course Title Animation */
+#course-title {
+  animation: fadeInDown 0.6s ease-out;
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

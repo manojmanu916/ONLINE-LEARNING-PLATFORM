@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Password Match and Show</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+
+  <div class="password-wrapper">
+    <input type="password" id="regPassword" placeholder="Create Password" required>
+    <span class="toggle-password" onclick="togglePassword('regPassword', this)">👁️</span>
+  </div>
+
+  <div class="password-wrapper">
+    <input type="password" id="confirmPassword" placeholder="Confirm Password" required oninput="checkPasswordMatch()">
+    <span class="toggle-password" onclick="togglePassword('confirmPassword', this)">👁️</span>
+  </div>
+
+  <p id="passwordMessage" class="match-message"></p>
+
+</body>
+</html>

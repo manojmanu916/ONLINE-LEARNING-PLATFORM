@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Courses - Alliance University</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style1.css">
+</head>
+<body class="bg-gray-100 font-sans">
+  <div class="flex min-h-screen">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-indigo-800 text-white p-6 flex-shrink-0 z-10 relative">
+      <div class="text-2xl font-bold mb-8">LEARNING PLATFORM</div>
+      <nav class="space-y-4">
+        <a href="#" id="courses-link" class="block px-4 py-2 rounded hover:bg-indigo-600 active:bg-indigo-700">Courses</a>
+       
+        <a href="#" id="messages-link" class="block px-4 py-2 rounded hover:bg-indigo-600">
+          Messages
+          <span id="messages-count" class="ml-2 bg-red-500 text-white text-xs rounded-full px-2 py-1 hidden">0</span>
+        </a>
+        <a href="#" id="grades-link" class="block px-4 py-2 rounded hover:bg-indigo-600">
+          Grades
+          <span id="grades-count" class="ml-2 bg-red-500 text-white text-xs rounded-full px-2 py-1 hidden">0</span>
+        </a>
+        <a href="signin.html" id="sign-out-link" class="block px-4 py-2 rounded hover:bg-indigo-600">Sign Out</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 relative">
+      <!-- Background Image -->
+      <div class="absolute inset-0 bg-cover bg-center z-0" style="background-image: url('C:\Users\bukka\OneDrive\Desktop\New folder (2)\Screenshot 2025-05-29 175941.png');"></div>
+
+      <!-- Main Content Area -->
+      <main class="relative z-10 p-8">
+        <!-- Welcome Section -->
+        <div id="welcome-section" class="rounded-lg shadow-lg p-12 text-center text-white bg-indigo-900 bg-opacity-80">
+          <h1 class="text-4xl font-bold mb-4">Welcome to the Learning Platform</h1>
+          <p class="text-lg">Explore a wide range of B.Tech engineering courses to enhance your skills and knowledge.</p>
+        </div>
+
+        <!-- Course List Section -->
+        <section id="course-list-section" class="hidden">
+          <header class="mb-8">
+            <h1 class="text-3xl font-bold text-blue-800">Courses</h1>
+            <input type="text" id="search-courses" placeholder="Search your courses"
+              class="mt-4 w-full max-w-md p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+          </header>
+          <h2 class="text-2xl font-semibold text-blue-700 mb-4">Winter 2024-25</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="course-card bg-blue-100 p-6 rounded-lg shadow-md cursor-pointer" data-course="compiler-design">
+              <h3 class="text-xl font-semibold text-blue-800">Compiler Design</h3>
+              <p><strong>Status:</strong> Open</p>
+             
+            </div>
+            <div class="course-card bg-orange-100 p-6 rounded-lg shadow-md cursor-pointer" data-course="data-structures">
+              <h3 class="text-xl font-semibold text-orange-800">Data Structures</h3>
+              <p><strong>Status:</strong> Open</p>
+             
+            </div>
+            <div class="course-card bg-green-100 p-6 rounded-lg shadow-md cursor-pointer" data-course="machine-learning">
+              <h3 class="text-xl font-semibold text-green-800">Machine Learning</h3>
+              <p><strong>Status:</strong> Open</p>
+             
+            </div>
+            <div class="course-card bg-purple-100 p-6 rounded-lg shadow-md cursor-pointer" data-course="computer-networks">
+              <h3 class="text-xl font-semibold text-purple-800">Computer Networks</h3>
+              <p><strong>Status:</strong> Open</p>
+             
+            </div>
+            <div class="course-card bg-red-100 p-6 rounded-lg shadow-md cursor-pointer" data-course="operating-systems">
+              <h3 class="text-xl font-semibold text-red-800">Operating Systems</h3>
+              <p><strong>Status:</strong> Open</p>
+            
+            </div>
+            <div class="course-card bg-teal-100 p-6 rounded-lg shadow-md cursor-pointer" data-course="database-systems">
+              <h3 class="text-xl font-semibold text-teal-800">Database Systems</h3>
+             <p><strong>Status:</strong> Open</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Course Details Section -->
+        <section id="course-details-section" class="hidden mt-10">
+          <button id="back-to-courses" class="mb-4 text-indigo-600 hover:underline">← Back to Courses</button>
+          <h2 id="course-title" class="text-3xl font-bold text-gray-800 mb-4"></h2>
+          <div id="course-content" class="bg-white p-6 rounded-lg shadow-md mb-6">
+            <p id="course-description" class="text-gray-700 mb-4"></p>
+          </div>
+
+          <!-- Updated Video Size -->
+          <div class="w-full max-w-6xl mx-auto">
+            <iframe id="course-video"
+                    class="w-full h-[500px] rounded-lg"
+                    src=""
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+            </iframe>
+          </div>
+        </section>
+
+        <!-- Messages Section -->
+        <section id="messages-section" class="hidden mt-10">
+          <button id="back-to-courses-from-messages" class="mb-4 text-indigo-600 hover:underline">← Back</button>
+          <h2 class="text-3xl font-bold text-gray-800 mb-4">Messages</h2>
+          <div id="messages-content" class="bg-white p-6 rounded-lg shadow-md">
+            <div id="quiz-list" class="mb-6"></div>
+            <div id="quiz-content" class="hidden">
+              <h3 id="quiz-title" class="text-2xl font-semibold text-gray-800 mb-4"></h3>
+              <p id="quiz-info" class="text-gray-700 mb-4">Number of Questions: 4 (Each question carries 5 marks)</p>
+              <div id="quiz-questions"></div>
+              <button id="submit-quiz" class="mt-4 bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">Submit</button>
+              <p id="quiz-result" class="mt-4 text-gray-700 hidden"></p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Grades Section -->
+        <section id="grades-section" class="hidden mt-10">
+          <h2 class="text-3xl font-bold text-gray-800 mb-4">Grades</h2>
+          <div id="grades-content" class="bg-white p-6 rounded-lg shadow-md">
+            <div id="subjects-list" class="mb-6"></div>
+            <div id="grades-table" class="hidden">
+              <button id="back-to-subjects" class="mb-4 text-indigo-600 hover:underline">← Back to Subjects</button>
+              <h3 id="subject-title" class="text-2xl font-semibold text-gray-800 mb-4"></h3>
+              <table class="w-full border-collapse">
+                <thead>
+                  <tr class="bg-gray-200">
+                    <th class="border p-2 text-left">Item Name</th>
+                    <th class="border p-2 text-left">Due Date</th>
+                    <th class="border p-2 text-left">Status</th>
+                    <th class="border p-2 text-left">Grade</th>
+                    <th class="border p-2 text-left">Result</th>
+                  </tr>
+                </thead>
+                <tbody id="grades-table-body"></tbody>
+              </table>
+            </div>
+            <div id="quiz-details" class="hidden">
+              <button id="back-to-grades" class="mb-4 text-indigo-600 hover:underline">← Back to Grades</button>
+              <h3 id="quiz-details-title" class="text-2xl font-semibold text-gray-800 mb-4"></h3>
+              <div id="quiz-details-content"></div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    const welcomeSection = document.getElementById('welcome-section');
+    const courseListSection = document.getElementById('course-list-section');
+    const courseDetailsSection = document.getElementById('course-details-section');
+    const messagesSection = document.getElementById('messages-section');
+    const gradesSection = document.getElementById('grades-section');
+    const coursesLink = document.getElementById('courses-link');
+    const messagesLink = document.getElementById('messages-link');
+    const gradesLink = document.getElementById('grades-link');
+    const messagesCount = document.getElementById('messages-count');
+    const gradesCount = document.getElementById('grades-count');
+    const backToCourses = document.getElementById('back-to-courses');
+    const backToCoursesFromMessages = document.getElementById('back-to-courses-from-messages');
+    const courseCards = document.querySelectorAll('.course-card');
+    const courseTitle = document.getElementById('course-title');
+    const courseDescription = document.getElementById('course-description');
+    const courseVideo = document.getElementById('course-video');
+    const searchCourses = document.getElementById('search-courses');
+    const quizList = document.getElementById('quiz-list');
+    const quizContent = document.getElementById('quiz-content');
+    const quizTitle = document.getElementById('quiz-title');
+    const quizQuestions = document.getElementById('quiz-questions');
+    const submitQuiz = document.getElementById('submit-quiz');
+    const quizResult = document.getElementById('quiz-result');
+    const subjectsList = document.getElementById('subjects-list');
+    const gradesTable = document.getElementById('grades-table');
+    const gradesTableBody = document.getElementById('grades-table-body');
+    const subjectTitle = document.getElementById('subject-title');
+    const backToSubjects = document.getElementById('back-to-subjects');
+    const quizDetails = document.getElementById('quiz-details');
+    const quizDetailsTitle = document.getElementById('quiz-details-title');
+    const quizDetailsContent = document.getElementById('quiz-details-content');
+    const backToGrades = document.getElementById('back-to-grades');
+    const signOutLink = document.getElementById('sign-out-link');
+
+    let quizzes = [];
+    let submittedQuizzes = [];
+    let currentQuiz = null;
+    let messageCount = 0;
+    let gradesCountValue = 0;
+    let quizSubmitted = false;
+
+    const colors = ['bg-blue-500', 'bg-orange-500', 'bg-cyan-500', 'bg-pink-500', 'bg-green-500'];
+
+    const courses = {
+      'compiler-design': {
+        id: 'BTech_CSE_AI_ML_2022_26_3_Sem6_AIML2_6CS1017',
+        title: 'Compiler Design',
+        description: 'Compiler design course introduction videos',
+        video: 'https://youtu.be/KBulg_u-b3w?si=XDFUYP27819swLM1',
+        quiz: [
+          {
+            question: 'What is the first phase of a compiler?',
+            options: ['Lexical Analysis', 'Syntax Analysis', 'Code Generation', 'Code Optimization'],
+            correct: 0
+          },
+          {
+            question: 'Which data structure is commonly used in lexical analysis?',
+            options: ['Stack', 'Queue', 'Symbol Table', 'Heap'],
+            correct: 2
+          },
+          {
+            question: 'What does a parser generate?',
+            options: ['Bytecode', 'Parse Tree', 'Assembly Code', 'Object Code'],
+            correct: 1
+          },
+          {
+            question: 'What is the role of the code generator in a compiler?',
+            options: ['Optimize code', 'Generate target code', 'Parse source code', 'Analyze syntax'],
+            correct: 1
+          }
+        ]
+      },
+      'data-structures': {
+        id: 'BTech_CSE_AI_ML_2022_26_3_Sem6_AIML2_6CS1022',
+        title: 'Data Structures',
+        description: 'Explore fundamental data structures like arrays...',
+        video: 'https://www.youtube.com/embed/RBSGKlAvoiM',
+        quiz: [
+          {
+            question: 'Which data structure follows LIFO?',
+            options: ['Queue', 'Stack', 'Array', 'Linked List'],
+            correct: 1
+          },
+          {
+            question: 'What is the time complexity of binary search in a sorted array?',
+            options: ['O(n)', 'O(log n)', 'O(n^2)', 'O(1)'],
+            correct: 1
+          },
+          {
+            question: 'Which data structure is used for BFS?',
+            options: ['Stack', 'Queue', 'Heap', 'Tree'],
+            correct: 1
+          },
+          {
+            question: 'What is a linked list best suited for?',
+            options: ['Random access', 'Dynamic size', 'Sorting', 'Searching'],
+            correct: 1
+          }
+        ]
+      },
+      'machine-learning': {
+        id: 'BTech_CSE_AI_ML_2022_26_3_Sem6_AIML2_6CS1016',
+        title: 'Machine Learning',
+        description: 'Dive into machine learning concepts...',
+        video: 'https://www.youtube.com/embed/ukzFI9rgwfU',
+        quiz: [
+          {
+            question: 'What is supervised learning?',
+            options: ['Learning without labels', 'Learning with labeled data', 'Learning with clustering', 'Learning with reinforcement'],
+            correct: 1
+          },
+          {
+            question: 'Which algorithm is used for classification?',
+            options: ['K-Means', 'Linear Regression', 'Logistic Regression', 'PCA'],
+            correct: 2
+          },
+          {
+            question: 'What is overfitting?',
+            options: ['Model too simple', 'Model too complex', 'Model with no errors', 'Model with high bias'],
+            correct: 1
+          },
+          {
+            question: 'What is the purpose of a validation set?',
+            options: ['Train the model', 'Test the model', 'Tune hyperparameters', 'Collect data'],
+            correct: 2
+          }
+        ]
+      },
+      'computer-networks': {
+        id: 'BTech_CSE_AI_ML_2022_26_3_Sem6_AIML2_6CS1018',
+        title: 'Computer Networks',
+        description: 'Understand the fundamentals of computer networking...',
+        video: 'https://www.youtube.com/embed/3QhU9jd03a0',
+        quiz: [
+          {
+            question: 'What does TCP stand for?',
+            options: ['Transmission Control Protocol', 'Transfer Control Protocol', 'Transport Control Protocol', 'Terminal Control Protocol'],
+            correct: 0
+          },
+          {
+            question: 'Which layer is responsible for routing?',
+            options: ['Physical Layer', 'Data Link Layer', 'Network Layer', 'Transport Layer'],
+            correct: 2
+          },
+          {
+            question: 'What is the purpose of DNS?',
+            options: ['Assign IP addresses', 'Resolve domain names', 'Encrypt data', 'Route packets'],
+            correct: 1
+          },
+          {
+            question: 'Which protocol is connectionless?',
+            options: ['TCP', 'UDP', 'HTTP', 'FTP'],
+            correct: 1
+          }
+        ]
+      },
+      'operating-systems': {
+        id: 'BTech_CSE_AI_ML_2022_26_3_Sem5_AIML2_5CS1014',
+        title: 'Operating Systems',
+        description: 'Study the core concepts of operating systems...',
+        video: 'https://www.youtube.com/embed/vBURTt97EkA',
+        quiz: [
+          {
+            question: 'What is a process in an OS?',
+            options: ['A hardware component', 'A running program', 'A file system', 'A network protocol'],
+            correct: 1
+          },
+          {
+            question: 'What does CPU scheduling aim to achieve?',
+            options: ['Maximize disk usage', 'Minimize response time', 'Increase memory size', 'Encrypt data'],
+            correct: 1
+          },
+          {
+            question: 'What is a deadlock?',
+            options: ['A process crash', 'A resource contention', 'A memory leak', 'A network failure'],
+            correct: 1
+          },
+          {
+            question: 'Which OS component manages hardware?',
+            options: ['Kernel', 'Shell', 'Application', 'File System'],
+            correct: 0
+          }
+        ]
+      },
+      'database-systems': {
+        id: 'BTech_CSE_AI_ML_2022_26_3_Sem5_AIML2_5CS1010',
+        title: 'Database Systems',
+        description: 'Learn about database design, SQL, NoSQL...',
+        video: 'https://www.youtube.com/embed/8jL2SPQ0mEs',
+        quiz: [
+          {
+            question: 'What does SQL stand for?',
+            options: ['Structured Query Language', 'Simple Query Language', 'Sequential Query Language', 'System Query Language'],
+            correct: 0
+          },
+          {
+            question: 'What is a primary key?',
+            options: ['A duplicate key', 'A unique identifier', 'A foreign key', 'A temporary key'],
+            correct: 1
+          },
+          {
+            question: 'Which is a NoSQL database?',
+            options: ['MySQL', 'PostgreSQL', 'MongoDB', 'Oracle'],
+            correct: 2
+          },
+          {
+            question: 'What is normalization in databases?',
+            options: ['Increase redundancy', 'Reduce redundancy', 'Encrypt data', 'Backup data'],
+            correct: 1
+          }
+        ]
+      }
+    };
+
+    function updateMessagesList() {
+      quizList.innerHTML = quizzes.map((quiz, index) => `
+        <div class="quiz-entry flex items-center border-b py-2 cursor-pointer" data-index="${index}">
+          <div class="w-2 h-10 ${colors[index % colors.length]} mr-4"></div>
+          <div class="flex-1">
+            <p class="text-sm text-gray-600">ID: ${quiz.id}</p>
+            <p class="text-lg font-semibold">${quiz.title}</p>
+          </div>
+          <div class="flex items-center text-gray-600">
+            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+            <span class="text-sm">New Message</span>
+          </div>
+        </div>
+      `).join('');
+
+      document.querySelectorAll('.quiz-entry').forEach(entry => {
+        entry.addEventListener('click', () => {
+          const index = entry.dataset.index;
+          currentQuiz = quizzes[index];
+          quizContent.classList.remove('hidden');
+          quizTitle.textContent = `${currentQuiz.title} Quiz`;
+          quizQuestions.innerHTML = currentQuiz.questions.map((q, i) => `
+            <div class="mb-4">
+              <p class="font-semibold">${i + 1}. ${q.question}</p>
+              ${q.options.map((option, j) => `
+                <label class="block">
+                  <input type="radio" name="question-${i}" value="${j}" class="mr-2">
+                  ${option}
+                </label>
+              `).join('')}
+            </div>
+          `).join('');
+          quizResult.classList.add('hidden');
+        });
+      });
+    }
+
+    function updateSubjectsList() {
+      const uniqueCourses = [...new Set(submittedQuizzes.map(quiz => quiz.courseId))];
+      subjectsList.innerHTML = uniqueCourses.map(courseId => {
+        const course = Object.values(courses).find(c => c.id === courseId);
+        return `
+          <div class="subject-entry border-b py-2 cursor-pointer" data-course-id="${courseId}">
+            <p class="text-sm text-gray-600">${courseId}</p>
+            <p class="text-lg font-semibold">${course.title}</p>
+            <p class="text-sm text-gray-600">Your recently graded work will appear here</p>
+          </div>
+        `;
+      }).join('');
+
+      document.querySelectorAll('.subject-entry').forEach(entry => {
+        entry.addEventListener('click', () => {
+          const courseId = entry.dataset.courseId;
+          const course = Object.values(courses).find(c => c.id === courseId);
+          subjectTitle.textContent = course.title;
+          const courseQuizzes = submittedQuizzes.filter(quiz => quiz.courseId === courseId);
+          gradesTableBody.innerHTML = courseQuizzes.map((quiz, index) => `
+            <tr>
+              <td class="border p-2">Quiz from ${course.title}</td>
+              <td class="border p-2">${quiz.date}</td>
+              <td class="border p-2">Graded</td>
+              <td class="border p-2">
+                <span class="inline-block bg-green-200 text-green-800 px-2 py-1 rounded">${quiz.score}/20</span>
+              </td>
+              <td class="border p-2">
+                <button class="view-details bg-gray-800 text-white px-3 py-1 rounded" data-quiz-index="${index}">View</button>
+              </td>
+            </tr>
+          `).join('');
+          subjectsList.classList.add('hidden');
+          gradesTable.classList.remove('hidden');
+
+          document.querySelectorAll('.view-details').forEach(button => {
+            button.addEventListener('click', () => {
+              const quizIndex = button.dataset.quizIndex;
+              const quiz = submittedQuizzes[quizIndex];
+              quizDetailsTitle.textContent = `Quiz from ${course.title}`;
+              quizDetailsContent.innerHTML = `
+                <p class="text-sm text-gray-600 mb-2">Submitted: ${quiz.date}</p>
+                <p class="text-lg font-semibold mb-2">Final Grade: ${quiz.score}/20</p>
+                ${quiz.questions.map((q, i) => `
+                  <div class="mb-4">
+                    <p class="font-semibold">${i + 1}. ${q.question}</p>
+                    ${q.options.map((option, j) => `
+                      <p class="${j === q.correct ? 'text-green-600' : (j === q.selected && j !== q.correct ? 'text-red-600' : 'text-gray-600')}">
+                        ${j === q.correct ? '✔' : (j === q.selected && j !== q.correct ? '✘' : '')} ${option}
+                      </p>
+                    `).join('')}
+                  </div>
+                `).join('')}
+              `;
+              gradesTable.classList.add('hidden');
+              quizDetails.classList.remove('hidden');
+            });
+          });
+        });
+      });
+    }
+
+    coursesLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      welcomeSection.classList.add('hidden');
+      courseListSection.classList.remove('hidden');
+      courseDetailsSection.classList.add('hidden');
+      messagesSection.classList.add('hidden');
+      gradesSection.classList.add('hidden');
+      coursesLink.classList.add('bg-indigo-700');
+      messagesLink.classList.remove('bg-indigo-700');
+      gradesLink.classList.remove('bg-indigo-700');
+      if (!quizSubmitted) {
+        messagesCount.classList.remove('hidden');
+      }
+      if (gradesCountValue > 0) {
+        gradesCount.classList.remove('hidden');
+      }
+    });
+
+    messagesLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      welcomeSection.classList.add('hidden');
+      courseListSection.classList.add('hidden');
+      courseDetailsSection.classList.add('hidden');
+      messagesSection.classList.remove('hidden');
+      gradesSection.classList.add('hidden');
+      coursesLink.classList.remove('bg-indigo-700');
+      messagesLink.classList.add('bg-indigo-700');
+      gradesLink.classList.remove('bg-indigo-700');
+      messagesCount.classList.add('hidden');
+      updateMessagesList();
+    });
+
+    gradesLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      welcomeSection.classList.add('hidden');
+      courseListSection.classList.add('hidden');
+      courseDetailsSection.classList.add('hidden');
+      messagesSection.classList.add('hidden');
+      gradesSection.classList.remove('hidden');
+      coursesLink.classList.remove('bg-indigo-700');
+      messagesLink.classList.remove('bg-indigo-700');
+      gradesLink.classList.add('bg-indigo-700');
+      gradesCount.classList.add('hidden');
+      gradesCountValue = 0;
+      updateSubjectsList();
+    });
+
+    backToCoursesFromMessages.addEventListener('click', (e) => {
+      e.preventDefault();
+      messagesSection.classList.add('hidden');
+      courseListSection.classList.remove('hidden');
+      coursesLink.classList.add('bg-indigo-700');
+      messagesLink.classList.remove('bg-indigo-700');
+      if (quizSubmitted) {
+        messageCount = 0;
+        messagesCount.textContent = messageCount;
+        messagesCount.classList.add('hidden');
+      } else {
+        messagesCount.classList.remove('hidden');
+      }
+      if (gradesCountValue > 0) {
+        gradesCount.classList.remove('hidden');
+      }
+    });
+
+    courseCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const courseId = card.dataset.course;
+        const course = courses[courseId];
+        courseTitle.textContent = course.title;
+        courseDescription.textContent = course.description;
+        courseVideo.src = course.video;
+        courseListSection.classList.add('hidden');
+        courseDetailsSection.classList.remove('hidden');
+
+        quizzes.push({
+          id: course.id,
+          title: course.title,
+          questions: course.quiz
+        });
+        messageCount++;
+        messagesCount.textContent = messageCount;
+        messagesCount.classList.remove('hidden');
+      });
+    });
+
+    backToCourses.addEventListener('click', (e) => {
+      e.preventDefault();
+      courseDetailsSection.classList.add('hidden');
+      courseListSection.classList.remove('hidden');
+      courseVideo.src = '';
+      if (gradesCountValue > 0) {
+        gradesCount.classList.remove('hidden');
+      }
+    });
+
+    searchCourses.addEventListener('input', (e) => {
+      const query = e.target.value.toLowerCase();
+      courseCards.forEach(card => {
+        const title = card.querySelector('h3').textContent.toLowerCase();
+        card.style.display = title.includes(query) ? 'block' : 'none';
+      });
+    });
+
+    submitQuiz.addEventListener('click', () => {
+      if (!currentQuiz) return;
+      let score = 0;
+      const userAnswers = [];
+      currentQuiz.questions.forEach((q, index) => {
+        const selected = document.querySelector(`input[name="question-${index}"]:checked`);
+        const selectedValue = selected ? parseInt(selected.value) : -1;
+        userAnswers.push(selectedValue);
+        if (selected && selectedValue === q.correct) {
+          score += 5;
+        }
+      });
+      quizResult.textContent = 'Your grade should be displayed on grade section.';
+      quizResult.classList.remove('hidden');
+      quizSubmitted = true;
+
+      const date = new Date().toLocaleDateString('en-US', { month: 'numeric', day: 'numeric', year: '2-digit' });
+      submittedQuizzes.push({
+        courseId: currentQuiz.id,
+        title: currentQuiz.title,
+        questions: currentQuiz.questions.map((q, i) => ({
+          question: q.question,
+          options: q.options,
+          correct: q.correct,
+          selected: userAnswers[i]
+        })),
+        score: score,
+        date: date
+      });
+      gradesCountValue++;
+      gradesCount.textContent = gradesCountValue;
+      gradesCount.classList.remove('hidden');
+    });
+
+    backToSubjects.addEventListener('click', (e) => {
+      e.preventDefault();
+      gradesTable.classList.add('hidden');
+      subjectsList.classList.remove('hidden');
+    });
+
+    backToGrades.addEventListener('click', (e) => {
+      e.preventDefault();
+      quizDetails.classList.add('hidden');
+      gradesTable.classList.remove('hidden');
+    });
+
+    signOutLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.location.href = 'index.html';
+    });
+  </script>
+</body>
+</html>

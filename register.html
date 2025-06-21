@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register - LearnHub</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="firebaseauth.js"></script>
+  <script defer src="script.js"></script>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <h1>LearnHub</h1>
+      <nav>
+        <a href="index.html">Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main>
+    <div class="form-container">
+      <h2>Create an Account</h2>
+      <form id="registerForm">
+        <input type="text" id="regName" placeholder="Full Name" required>
+        
+        <input type="tel" id="regPhone" placeholder="Phone Number" maxlength="10"   pattern="[0-9]{10}" required>
+        <input type="email" id="regEmail" placeholder="Email Address" required>
+  <div class="password-wrapper">
+    <input type="password" id="regPassword" placeholder="Create Password" required>
+    <span class="toggle-password1" onclick="togglePassword('regPassword', this)">👁️</span>
+  </div>
+
+  <div class="password-wrapper">
+    <input type="password" id="confirmPassword" placeholder="Confirm Password" required oninput="checkPasswordMatch()">
+    <span class="toggle-password" onclick="togglePassword('confirmPassword', this)">👁️</span>
+  </div>
+
+  <p id="passwordMessage" class="match-message"></p>
+
+        <!-- Captcha (Simple Text) -->
+        <label for="captchaInput" style="margin-bottom: 0.5rem; display: block;">What is 3 + 4?</label>
+        <input type="text" id="captchaInput" placeholder="Enter captcha answer" required>
+
+        <button type="submit">Register</button>
+      </form>
+
+      <p>Already have an account? <a href="index.html">Login here</a></p>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 LearnHub - Empowering Education Through Technology</p>
+    </div>
+  </footer>
+
+</body>
+</html>
